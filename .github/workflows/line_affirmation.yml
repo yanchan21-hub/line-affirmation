@@ -1,0 +1,26 @@
+name: LINE Affirmation
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 22 * * *"
+    - cron: "0 12 * * *"
+
+jobs:
+  send-message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install requests
+
+      - name: Run script
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python line_send_fixed_message.py
