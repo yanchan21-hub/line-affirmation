@@ -9,24 +9,40 @@ LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
 LINE_TO_USER_ID = os.getenv("LINE_TO_USER_ID")
 SCHEDULER_SECRET = os.getenv("SCHEDULER_SECRET")
 
-MORNING_MESSAGES = [
-    "おはようございます！今日も一歩ずつ進めていきましょう。",
-    "朝のスタートです。今日やることを1つ決めて動きましょう。",
-    "無理なくでも止まらず。今日も前進です。"
-]
+def load_messages(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        return [line.strip() for line in f if line.strip()]
 
-NIGHT_MESSAGES = [
-    "今日もお疲れさまでした。できたことを1つ振り返りましょう。",
-    "夜の確認タイムです。小さくても進んだ自分を認めましょう。",
-    "1日お疲れさまでした。明日の準備を少しだけして終わりましょう。"
-]
+MORNING_MESSAGES = load_messages("data/line_evening_affirmations.txt")
+NIGHT_MESSAGES = load_messages("data/line_evening_affirmations.txt")
+
+recent_morning_messages = []
+recent_night_messages = []
+
+RECENT_LIMIT = 3
+
+
+def pick_message_from_pool(messages, recent_list):
+    candidates = [m for m in messages if m not in recent_list]
+
+    if not candidates:
+        recent_list.clear()
+        candidates = messages[:]
+
+    message = random.choice(candidates)
+    recent_list.append(message)
+
+    if len(recent_list) > RECENT_LIMIT:
+        recent_list.pop(0)
+
+    return message
 
 
 def pick_message(job_type: str) -> str:
     if job_type == "morning":
-        return random.choice(MORNING_MESSAGES)
+        return pick_message_from_pool(MORNING_MESSAGES, recent_morning_messages)
     if job_type == "night":
-        return random.choice(NIGHT_MESSAGES)
+        return pick_message_from_pool(NIGHT_MESSAGES, recent_night_messages)
     raise ValueError("invalid jobType")
 
 
