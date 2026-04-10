@@ -13,8 +13,8 @@ def load_messages(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
-MORNING_MESSAGES = load_messages("data/line_evening_affirmations.txt")
-NIGHT_MESSAGES = load_messages("data/line_morning_affirmations.txt")
+MORNING_MESSAGES = load_messages("data/line_morning_affirmations.txt")
+NIGHT_MESSAGES = load_messages("data/line_evening_affirmations.txt")
 
 recent_morning_messages = []
 recent_night_messages = []
