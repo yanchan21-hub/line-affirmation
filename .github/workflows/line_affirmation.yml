@@ -1,10 +1,5 @@
 name: LINE Affirmation
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "7 22 * * *"   # JST 7:07
-    - cron: "7 14 * * *"   # JST 23:07
 
 jobs:
   send-message:
