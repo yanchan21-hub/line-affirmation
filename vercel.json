@@ -1,8 +1,9 @@
 {
-    "crons": [
-      {
-        "path": "/api/slack-create-stories",
-        "schedule": "0 0 20 * *"
-      }
-    ]
-  }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/slack-create-stories",
+      "schedule": "0 7 20 * *"
+    }
+  ]
+}
