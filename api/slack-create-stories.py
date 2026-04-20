@@ -111,7 +111,7 @@ def _build_sheets_service():
     if not GOOGLE_SHEETS_ID:
         raise ValueError("GOOGLE_SHEETS_ID が未設定です。")
 
-    credentials = service_account.Credentials.from_service_account_file(
+    credentials = service_account.Credentials.from_service_account_info(
         GOOGLE_SERVICE_ACCOUNT_FILE,
         scopes=["https://www.googleapis.com/auth/spreadsheets"],
     )
