@@ -81,6 +81,10 @@ def _monthly_message(target_dt: datetime, override: str | None = None) -> str:
 
 
 class handler(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        self.do_POST()
+        
     def do_POST(self):
         try:
             secret = self.headers.get("X-Scheduler-Secret")
