@@ -101,15 +101,16 @@ def _monthly_message(
         return override.strip()
 
     default_template = (
-        "【{year}年{month}月 ストーリーズ制作用】\n\n"
-        "■前半テキスト納期：{first_text_deadline}\n"
-        "■前半予約投稿納期：{first_reserve_deadline}\n"
-        "■後半テキスト納期：{second_text_deadline}\n"
-        "■後半予約投稿納期：{second_reserve_deadline}\n\n"
-        "火曜日以外を配信対象として、前半・後半に分けて作成してください。\n"
-        "{note_block}"
-        "このスレッドで進行してください。"
-    )
+    "【{year}年{month}月 ストーリーズ制作用】\n\n"
+    "<@U096ZH097D3> さん cc <@U07P48PSESC> さん\n\n"
+    "■前半テキスト納期：{first_text_deadline}\n"
+    "■前半予約投稿納期：{first_reserve_deadline}\n"
+    "■後半テキスト納期：{second_text_deadline}\n"
+    "■後半予約投稿納期：{second_reserve_deadline}\n\n"
+    "火曜日以外を配信対象として、前半・後半に分けて作成してください。\n"
+    "{note_block}"
+    "このスレッドで進行をお願いします。"
+)
 
     template = os.getenv("STORIES_PARENT_MESSAGE_TEMPLATE", default_template)
     note_block = f"備考：{note}\n" if note.strip() else ""
