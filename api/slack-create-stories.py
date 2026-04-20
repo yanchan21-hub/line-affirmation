@@ -26,7 +26,7 @@ try:
 except ImportError:
     pass
 
-from slack_post_message import post_message
+from api.slack_post_message import post_message
 
 
 # ========= 環境変数 =========
