@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/api/slack-create-stories",
-      "schedule": "0 8 20 * *"
+      "schedule": "10 9 20 * *"
     }
   ]
 }
