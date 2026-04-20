@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/*.py": {
+      "runtime": "python3.11"
+    }
+  },
   "crons": [
     {
       "path": "/api/slack-create-stories",
