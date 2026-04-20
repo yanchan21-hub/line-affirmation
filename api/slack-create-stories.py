@@ -87,9 +87,9 @@ class handler(BaseHTTPRequestHandler):
         
     def do_POST(self):
         try:
-            secret = self.headers.get("X-Scheduler-Secret")
-            if not SCHEDULER_SECRET or secret != SCHEDULER_SECRET:
-                self.send_response(401)
+# secret = self.headers.get("X-Scheduler-Secret")
+# if not SCHEDULER_SECRET or secret != SCHEDULER_SECRET:
+#     return 401
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(
