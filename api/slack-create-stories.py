@@ -106,13 +106,15 @@ def _monthly_message(
 
 
 def _build_sheets_service():
-    if not GOOGLE_SERVICE_ACCOUNT_FILE:
-        raise ValueError("GOOGLE_SERVICE_ACCOUNT_FILE が未設定です。")
+    if not GOOGLE_SERVICE_ACCOUNT_JSON:
+        raise ValueError("GOOGLE_SERVICE_ACCOUNT_JSON が未設定です。")
     if not GOOGLE_SHEETS_ID:
         raise ValueError("GOOGLE_SHEETS_ID が未設定です。")
 
+    info = json.loads(GOOGLE_SERVICE_ACCOUNT_JSON)
+
     credentials = service_account.Credentials.from_service_account_info(
-        GOOGLE_SERVICE_ACCOUNT_FILE,
+        info,
         scopes=["https://www.googleapis.com/auth/spreadsheets"],
     )
     return build("sheets", "v4", credentials=credentials)
