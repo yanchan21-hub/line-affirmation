@@ -32,7 +32,7 @@ from slack_post_message import post_message
 # ========= 環境変数 =========
 GOOGLE_SHEETS_ID = os.getenv("GOOGLE_SHEETS_ID", "").strip()
 GOOGLE_STORIES_SHEET_NAME = os.getenv("GOOGLE_STORIES_SHEET_NAME", "Instagram ストーリーズ管理シート").strip()
-GOOGLE_SERVICE_ACCOUNT_FILE = os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE", "").strip()
+GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "")
 
 # 任意: 将来 Vercel の CRON_SECRET を使うとき用
 CRON_SECRET = os.getenv("CRON_SECRET", "").strip()
